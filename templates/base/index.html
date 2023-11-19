@@ -1,0 +1,172 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+    <main>
+
+        <!-- Banner area start here -->
+        <section class="banner-two">
+            <div class="banner-two__shape-right d-none d-lg-block wow bounceInRight" data-wow-duration="1s"
+                data-wow-delay=".1s">
+                <img class="sway_Y__animation " src="{{settings.image_banner.url}}" alt="shape">
+            </div>
+            <div class="swiper banner-two__slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-bg" data-background="{% static 'assets/images/banner/banner-two-image1.jpg' %}"></div>
+                        <div class="container">
+                            <div class="banner-two__content">
+                                <h1 data-animation="fadeInUp" data-delay="1.3s">{{settings.title}}
+                                    </h1>
+                                <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">
+                                    {{settings.descriptions}}
+                                </p>
+                                <div class="btn-wrp mt-65">
+                                    <a href="{% url 'product' %}" class="btn-one" data-animation="fadeInUp"
+                                        data-delay="1.8s"><span>Новое поступление</span></a>
+                                    <a class="btn-one-light ml-20" href="{% url 'news' %}" data-animation="fadeInUp"
+                                        data-delay="1.9s"><span>Следите за обновлениями</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner area end here -->
+
+        <!-- Category area start here -->
+        <section class="category-area category-two pb-130 pt-130">
+            <div class="container">
+                <div class="bor-bottom pb-130">
+                    <div class="sub-title text-center mb-65 wow fadeInUp" data-wow-delay=".1s">
+                        <h3><span class="title-icon"></span> Наши категории <span class="title-icon"></span>
+                        </h3>
+                    </div>
+                    <div class="swiper category__slider">
+                        <div class="swiper-wrapper">
+                            {% for category in categories %}
+                            <div class="swiper-slide">
+                                <div class="category__item category-two__item text-center">
+                                    <a href="{% url 'product' %}" class="category__image d-block">
+                                        <img src="{{category.image.url}}" alt="image">
+                                    </a>
+                                    <h4 class="mt-30"><a href="{% url 'product' %}">{{category.title}}</a></h4>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Category area end here -->
+
+        <!-- Discount area start here -->
+        <section class="discount-area bg-image" data-background="{% static 'assets/images/bg/discount-bg2.jpg' %}">
+            <div class="container">
+                <div class="row align-items-center">
+                    {% for product in best_product %}
+                    {% if product.is_popular %}
+                    <div class="col-lg-6">
+                        <div class="image mb-5 mb-lg-0"><img src="{{product.image.url}}" style="width: 700px; height: 600px;"
+                                alt="image"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="discount__item ps-0 pb-5 pb-lg-0 ps-lg-5">
+                            <div class="section-header">
+                                <div class="section-title-icon wow fadeInUp" data-wow-delay=".1s">
+                                    <span class="title-icon mr-10"></span>
+                                    <h2>{{product.title}}</h2>
+                                </div>
+                                <p class="mt-30 mb-55 wow fadeInUp" data-wow-delay=".2s">
+                                    {{product.description}}
+                                </p>
+                                <a class="btn-one wow fadeInUp" data-wow-delay=".3s" href="{% url 'product_detail' product.id %}"><span>Купить</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-6">
+                        <div class="image mb-5 mb-lg-0"><img src="{{about.image.url}}" style="width: 700px; height: 600px;"
+                                alt="image"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="discount__item ps-0 pb-5 pb-lg-0 ps-lg-5">
+                            <div class="section-header">
+                                <div class="section-title-icon wow fadeInUp" data-wow-delay=".1s">
+                                    <span class="title-icon mr-10"></span>
+                                    <h2>{{about.title}}</h2>
+                                </div>
+                                <p class="mt-30 mb-55 wow fadeInUp" data-wow-delay=".2s">
+                                    {{about.descriptions}}
+                                </p>
+                                <a class="btn-one wow fadeInUp" data-wow-delay=".3s" href="{% url 'contact' %}"><span>Напишите нам</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Discount area end here -->
+        <br>
+
+        <!-- Text slider area start here -->
+        <div class="container">
+            <div class="bor-top pb-40"></div>
+        </div>
+        <div class="marquee-wrapper text-slider">
+            <div class="marquee-inner to-left">
+                <ul class="marqee-list d-flex">
+                    <li class="marquee-item" style="color: red;">
+                        Акция! <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon"> <span>Акция!</span>
+                        <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon">
+                        Акция! <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon"> <span>Акция!</span>
+                        <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon">
+                        Акция! <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon"> <span>Акция!</span>
+                        <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon">
+                        Акция! <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon"> <span>Акция!</span>
+                        <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon">
+                        Акция! <img src="{% static 'assets/images/icon/title-left.svg' %}" alt="icon"> <span>Акция!</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="bor-top pb-65"></div>
+        </div>
+        <!-- Text slider area end here -->
+
+        <!-- Gallery area start here -->
+        <section class="gallery-area">
+            <div class="swiper gallery__slider">
+                <div class="swiper-wrapper">
+                    {% for product in products %}
+                    {% if product.old_price %}
+                    <div class="swiper-slide">
+                        <div class="gallery__item">
+                            <div class="gallery__image image">
+                                <img src="{{product.image.url}}" alt="image">
+                            </div>
+                            <div class="gallery__content">
+                                <h3 class="mb-10"><a href="{% url 'product_detail' product.id %}">{{product.title}}</a></h3>
+                                <p><del>{{product.old_price}}</del></p>
+                                <p>{{product.price}} сом</p>
+                                <a href="{% url 'product_detail' product.id %}" class="btn-two mt-25"><span>Заказать сейчас</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Gallery area end here -->
+
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}

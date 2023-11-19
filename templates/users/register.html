@@ -1,0 +1,65 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+    <main>
+        <!-- Page banner area start here -->
+        <section class="page-banner bg-image pt-130 pb-130" data-background="{% static 'assets/images/banner/inner-banner.jpg' %}">
+            <div class="container">
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Зарегистрироваться</h2>
+                <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
+                    <a href="{% url 'index' %}" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Главная страница <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <span>Зарегистрироваться</span>
+                </div>
+            </div>
+        </section>
+        <!-- Page banner area end here -->
+
+        <!-- Login area start here -->
+        <section class="login-area pt-130 pb-130">
+            <div class="container">
+                <div class="login__item">
+                    <div class="row g-4">
+                        <div class="col-xxl-8">
+                            <div class="login__image">
+                                <img src="{% static 'assets/images/login/системный_блок_2.png' %}" alt="image">
+                                <div class="btn-wrp">
+                                    <a href="{% url 'login' %}">Войти</a>
+                                    <a class="active" href="{% url 'register' %}">Создать аккаунт</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4">
+                            <div class="login__content">
+                                <h2 class="text-white mb-65">Зарегистрироваться</h2>
+                                <div class="form-area login__form">
+                                    <form method="post" >
+                                        {% csrf_token %}
+                                        <input name="username" type="text" placeholder="Введите ФИО">
+                                        <input name="email" class="mt-30" type="email" placeholder="Введите свою почту (email)">
+                                        <input name="password" class="mt-30" type="password" placeholder="Введите пароль">
+                                        <input name="confirm_password" class="mt-30" type="password" placeholder="Подтвердите пароль">
+                                        <button class="mt-30">Создать аккаунт</button>
+                                    </form>
+                                    <span class="or pt-30 pb-40">Или</span>
+                                </div>
+                                <div class="login__with">
+                                    <a href="#0"><img src="{% static 'assets/images/icon/google.svg' %}" alt=""> Продолжить с
+                                        google</a>
+                                    <a class="mt-15" href="#0"><img src="{% static 'assets/images/icon/facebook.svg' %}" alt="">
+                                        Продолжить с
+                                        facebook</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Login area end here -->
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}

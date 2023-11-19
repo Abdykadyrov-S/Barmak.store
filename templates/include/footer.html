@@ -1,0 +1,45 @@
+{% load static %}
+
+    <!-- Footer area start here -->
+    <footer class="footer-area bg-image" data-background="{% static 'assets/images/footer/footer-bg.jpg' %}">
+        <div class="container">
+            <hr style="color: aliceblue;">
+            <div class="footer__copy-text pt-50 pb-50">
+                <a href="{% url 'index' %}" class="logo d-block">
+                    <img src="{{settings.logo.url}}" alt="logo">
+                </a>
+                <p>&copy; Copyright 2023 {{settings.title}} | Все Права Защищены | <a href="https://codexstudio.site/" class="primary-hover"> Сделано командой Codex-studio </a></p>
+                <a href="#0" class="payment d-block image">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer area end here -->
+
+    <!-- Back to top area start here -->
+    <div class="scroll-up">
+        <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Back to top area end here -->
+
+        <!-- Preloader area start -->
+        <div class="loading">
+            <span class="text-capitalize">B</span>
+            <span>a</span>
+            <span>r</span>
+            <span>m</span>
+            <span>a</span>
+            <span>k</span>
+        </div>
+    
+        <div id="preloader">
+        </div>
+        <!-- Preloader area end -->
+    
+        <!-- Mouse cursor area start here -->
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+        <!-- Mouse cursor area end here -->
+    

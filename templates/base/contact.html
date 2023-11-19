@@ -1,0 +1,71 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+
+    <main>
+        <!-- Page banner area start here -->
+        <section class="page-banner bg-image pt-130 pb-130" data-background="{% static 'assets/images/banner/inner-banner.jpg' %}">
+            <div class="container">
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Contact Us</h2>
+                <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
+                    <a href="{% url 'index' %}" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Home <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <span>Contact Us</span>
+                </div>
+            </div>
+        </section>
+        <!-- Page banner area end here -->
+
+        <!-- Contact form area start here -->
+        <section class="contact pt-130 pb-130">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="content radius-10 bg-image">
+                            <h2>У вас есть вопросы?</h2>
+                            <p>Не стесняйтесь писать нам в любое время<br></p>
+                            <div class="arry"><img src="{% static 'assets/images/contact/arry.png' %}" alt=""></div>
+                            <ul>
+                                <li><a href="https://go.2gis.com/8v81u"
+                                        target="_blank"><i class="fa-solid fa-location-dot"></i>{{settings.location}}</a>
+                                </li>
+                                <li><a href="tel:{{settings.phone}}"><i class="fa-solid fa-phone-volume"></i>{{settings.phone}}</a>
+                                </li>
+                                <li><a href="mailto:{{settings.email}}"><i
+                                            class="fa-solid fa-envelope"></i>{{settings.email}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-area">
+                            <form method="post">
+                                {% csrf_token %}
+                                <input name="name" type="text" placeholder="Введите ФИО">
+                                <input name="phone" type="text" placeholder="Введите номер телефона">
+                                <select name="cause" id="subject">
+                                    <option value="Причина обращения">Причина обращения</option>
+                                    <option value="Выбор товара">Выбор товара</option>
+                                    <option value="Консультация">Консультация</option>
+                                    <option value="Цены">Цены</option>
+                                    <option value="Помощь">Помощь</option>
+                                </select>
+                                <textarea name="message" id="massage" placeholder="Message..."></textarea>
+                                <button class="mt-40 btn-one"><span>Отправить</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact form area end here -->
+
+        <!-- Contact map area start here -->
+        <div class="google-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.1033947736178!2d74.6085218117756!3d42.870661771029724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7c8aa45a8e5%3A0x7ffabd8576bf4896!2zMTUyINGD0LsuINCu0YHRg9C_0LAg0JDQsdC00YDQsNGF0LzQsNC90L7QstCwLCDQkdC40YjQutC10Lo!5e0!3m2!1sru!2skg!4v1700309171631!5m2!1sru!2skg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <!-- Contact map area end here -->
+    </main>
+    {% include 'include/footer.html' %}
+    {% endblock %}

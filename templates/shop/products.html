@@ -1,0 +1,112 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+
+    <main>
+        <!-- Product area start here -->
+        <section class="product-area pt-130 pb-130 mt-130" >
+            <div class="container">
+                <h1>Наши Продукты</h1>
+                <br><br>
+                <div
+                    class="product__wrp pb-30 mb-65 bor-bottom d-flex flex-wrap align-items-center justify-content-xl-between justify-content-center">
+                    <ul class="nav nav-pills mt-4 mt-xl-0">
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".1s">
+                            <a href="#all" data-bs-toggle="tab" class="nav-link px-4 active">
+                                Все продукты
+                            </a>
+                        </li>
+                        {% for category in categories %}
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".1s">
+                            <a href="#{{category.title}}" data-bs-toggle="tab" class="nav-link px-4 ">
+                               {{category.title}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="tab-content" style="overflow-y: auto;height: 700px;overflow-x: hidden;">
+                    <div id="all" class="tab-pane fade show active">
+                        <div class="row g-4">
+                            {% for product in products %}
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="product__item bor">
+                                    <a href="{% url 'product_detail' product.id %}" class="product__image pt-20 d-block">
+                                        <img class="font-image" src="{{product.image.url}}"
+                                            alt="image">
+                                        <img class="back-image" src="{{product.image_2.url}}"
+                                            alt="image">
+                                    </a>
+                                    <div class="product__content">
+                                        <h4 class="mb-15"><a class="primary-hover" href="{% url 'product_detail' product.id %}">{{product.title}}</a></h4>
+                                        {% if product.old_price %}
+                                        <del>{{product.old_price}} сом</del>
+                                        {% endif %}
+                                        <span class="primary-color ml-10">{{product.price}} сом</span>
+                                        <div class="star mt-20">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                    <a class="product__cart d-block bor-top" href="{% url 'product_detail' product.id %}"><i
+                                            class="fa-regular fa-cart-shopping primary-color me-1"></i>
+                                        <span>Add to
+                                            cart</span></a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% for category in categories %}
+                    <div id="{{category.title}}" class="tab-pane fade show " >
+                        <div class="row g-4">
+                            {% for product in products %}
+                            {% if product.category.title == category.title %}
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="product__item bor">
+                                    <a href="{% url 'product_detail' product.id %}" class="product__image pt-20 d-block">
+                                        <img class="font-image" src="{{product.image.url}}"
+                                            alt="image">
+                                        <img class="back-image" src="{{product.image_2.url}}"
+                                            alt="image">
+                                    </a>
+                                    <div class="product__content">
+                                        <h4 class="mb-15"><a class="primary-hover" href="{% url 'product_detail' product.id %}">{{product.title}}</a></h4>
+                                        {% if product.old_price %}
+                                        <del>{{product.old_price}} сом</del>
+                                        {% endif %}
+                                        <span class="primary-color ml-10">{{product.price}} сом</span>
+                                        <div class="star mt-20">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                    <a class="product__cart d-block bor-top" href="#0"><i
+                                            class="fa-regular fa-cart-shopping primary-color me-1"></i>
+                                        <span>Add to
+                                            cart</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Product area end here -->
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}

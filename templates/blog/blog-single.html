@@ -1,0 +1,89 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+    <main>
+        <!-- Page banner area start here -->
+        <section class="page-banner bg-image pt-130 pb-130" data-background="assets/images/banner/inner-banner.jpg">
+            <div class="container">
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Blog Single</h2>
+                <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
+                    <a href="index.html" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Home <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <a href="blog.html" class="primary-hover"> Blog <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <span>Blog Single</span>
+                </div>
+            </div>
+        </section>
+        <!-- Page banner area end here -->
+
+        <!-- Blog single area start here -->
+        <section class="blog-slingle pt-130 pb-130">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="right-item sub-bg">
+                            <h4 class="mb-30">Search</h4>
+                            <div class="search mb-40">
+                                <input type="text" placeholder="Search here. . .">
+                                <button><i class="fa-solid fa-search"></i></button>
+                            </div>
+                            <h4 class="mb-30">Categories</h4>
+                            <ul class="right_list mb-40">
+                                <li><a class="d-block pb-1 mb-2" href="#0">Business</a></li>
+                                <li><a class="d-block pb-1 mb-2" href="#0">Job Market</a></li>
+                                <li><a class="d-block pb-1 mb-2" href="#0">Marketing</a></li>
+                                <li><a class="d-block pb-1 mb-2" href="#0">News</a></li>
+                                <li><a class="d-block pb-1 mb-2" href="#0">Social Media</a></li>
+                                <li><a class="d-block pb-1 mb-2" href="#0">Trends</a></li>
+                                <li><a class="d-block" href="#0">Writing</a></li>
+                            </ul>
+                            <div class="image mt-40">
+                                <img src="assets/images/blog/single4.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="image mb-30">
+                            <img src="{{news.image.url}}" alt="image">
+                        </div>
+                        <div class="item">
+                            <div class="info">
+                                <span>Опубликован</span>
+                                <span class="info_dot"></span>
+                                <span>{{news.create}}</span>
+                            </div>
+                            <h1 class="text-capitalize mt-30 mb-3">{{news.title}}</h1>
+                            <div class="blog_testimonial mb-30 sub-bg">
+                                <p>{{news.descriptions}}</p>
+                            </div>
+                            <h3 class="mb-40 mt-5">Другие новости</h3>
+                        </div>
+                        <div class="arry pt-30 pb-30 d-flex align-items-center justify-content-between">
+                            <a href="{% url 'news' %}"><i class="fa-solid fa-arrow-left-long pe-1"></i>Назад</a>
+                            <a href="{% url 'news' %}">Все новости<i class="fa-solid fa-arrow-right-long ps-1"></i></a>
+                        </div>
+                        <div class="row g-4">
+                            {% for new in news_others %}
+                            <div class="col-md-6">
+                                <div class="recent-post sub-bg">
+                                    <div class="img"><a href="{% url 'news_detail' new.id %}"><img src="{{new.image.url}}" style="width: 60px; height: 60px;" alt="image"></a></div>
+                                    <div class="con">
+                                        <span>{{new.create}}</span>
+                                        <h5><a href="{% url 'news_detail' new.id %}">{{new.title}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog single area end here -->
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}

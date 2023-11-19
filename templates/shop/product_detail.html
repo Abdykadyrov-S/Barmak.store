@@ -1,0 +1,109 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+    <main>
+        <!-- Page banner area start here -->
+        <section class="page-banner bg-image pt-130 pb-130" data-background="{% static 'assets/images/banner/inner-banner.jpg' %}">
+            <div class="container">
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Подробнее о продукте</h2>
+                <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
+                    <a href="{% url 'index' %}" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Главная страница <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <a href="{% url 'product' %}" class="primary-hover"> продукты <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <span>{{product.title}}</span>
+                </div>
+            </div>
+        </section>
+        <!-- Page banner area end here -->
+
+        <!-- Shop single area start here -->
+        <section class="shop-single pt-130 pb-130">
+            <div class="container">
+                <!-- product-details area start here -->
+                <div class="product-details-single pb-40">
+                    <div class="row g-4">
+                        <div class="col-lg-5">
+                            <div class="image img">
+                                <div class="swiper shop-single-slide">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="{{product.image.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="{{product.image_2.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="{{product.image_3.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="{{product.image_4.url}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 swiper shop-slider-thumb">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide slide-smoll">
+                                            <img src="{{product.image.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide slide-smoll">
+                                            <img src="{{product.image_2.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide slide-smoll">
+                                            <img src="{{product.image_3.url}}" alt="image">
+                                        </div>
+                                        <div class="swiper-slide slide-smoll">
+                                            <img src="{{product.image_4.url}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="content h24">
+                                <h1 class="pb-2 primary-color">{{product.title}}</h1>
+                                <h4 class="pb-2 primary-color">Описание:</h4>
+                                <p class="text-justify mb-10">{{product.description}}</p>
+                                    </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="details-area">
+                                        <div class="category flex-wrap mt-4 d-flex py-3 bor-top bor-bottom">
+                                            <h4 class="pe-3">Категория :</h4>
+                                            <h4>{{product.category}}</h4>
+                                        </div>
+                                        <div class="d-flex flex-wrap align-items-center py-3 bor-bottom">
+                                            <h4 class="pe-3">Стоимость:</h4>
+                                            <h4>{{product.price}} сом</h4>
+                                        </div>
+                                        <form method='POST' class='quantity' action="{% url 'add_to_cart' %}">
+                                            {% csrf_token %}
+                                        <div class="cart-wrp py-4">
+                                            <input type='hidden' name="product_id" value="{{ product.id }}" class='qty'>
+                                            <input type='hidden' name="price" value="{{ product.price }}" class='qty'>
+                                            <div class="cart-quantity">
+                                                    <!-- <input type='button' value='-' class='qtyminus minus'> -->
+                                                    <input type='number' name='quantity' value='0' class='qty'>
+                                                    <!-- <input type='button' value='+' class='qtyplus plus'> -->
+                                                </div>
+                                            </div>
+                                            <a class="d-block text-center btn-two mt-40" href="https://wa.me/+996771244745/?text=Здравствуйте! Я хочу купить {{product.title}}. Можем ли мы обсудить детали?">Купить<i class="fa-solid fa-basket-shopping pe-2"></i> </a>
+                                            <!-- <button type="submit" class="d-block text-center btn-two mt-40 ">Купить<i class="fa-solid fa-basket-shopping pe-2"></i></div> -->
+                                            </form>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product-details area end here -->
+            </div>
+            <!-- description review area end here -->
+        </section>
+        <!-- Shop single area end here -->
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}

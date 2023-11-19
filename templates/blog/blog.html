@@ -1,0 +1,47 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+
+    <main>
+        <!-- Page banner area start here -->
+        <section class="page-banner bg-image pt-130 pb-130" data-background="assets/images/banner/inner-banner.jpg">
+            <div class="container">
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Новости</h2>
+                <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
+                    <a href="{% url 'index' %}" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Главная страница <i
+                            class="fa-regular text-white fa-angle-right"></i></a>
+                    <span>Новости</span>
+                </div>
+            </div>
+        </section>
+        <!-- Page banner area end here -->
+
+        <!-- Blog area start here -->
+        <section class="blog pt-130 pb-130">
+            <div class="container">
+                <div class="row g-4">
+                    {% for new in news %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog__item-right">
+                            <a href="{% url 'news_detail' new.id %}" class="image d-block">
+                                <img class="radius-10_blog" src="{{new.image.url}}" alt="image">
+                            </a>
+                            <h3><a href="{% url 'news_detail' new.id %}">{{new.title}}</a>
+                            </h3>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="blog__tag"><a href="{% url 'news_detail' new.id %}" style="color: red;"><b>Подробнее</b></a></span>
+                                <span>{{new.create}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Blog area end here -->
+    </main>
+
+    {% include 'include/footer.html' %}
+    {% endblock %}
