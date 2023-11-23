@@ -25,4 +25,4 @@ def search(request):
         # Используйте Q-объекты для выполнения поиска в моделях Shop и Product
         products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
 
-    return render(request, 'shop/foods.html', locals())
+    return render(request, 'shop/products.html', locals())

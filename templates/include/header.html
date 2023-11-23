@@ -7,10 +7,14 @@
                 <a href="{% url 'index' %}" class="main__logo">
                     <img src="{{settings.logo.url}}" style="width: 100px;" alt="logo__image">
                 </a>
-                <div class="search__wrp">
-                    <input placeholder="Искать" aria-label="Search">
-                    <button><i class="fa-solid fa-search"></i></button>
-                </div>
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <div class="search__wrp">
+                        <input type="text" name="query" placeholder="Искать" aria-label="Search" value="{{ query }}">
+                        <button type="submit"><i class="fa-solid fa-search"></i></button>
+                    </div>
+                </form>
+                
                 <div class="account__wrap">
                     <div class="account d-flex align-items-center">
                         {% if user.is_authenticated %}
