@@ -5,7 +5,7 @@
         <div class="container">
             <div class="top__wrapper">
                 <a href="{% url 'index' %}" class="main__logo">
-                    <img src="{{settings.logo.url}}" style="width: 100px;" alt="logo__image">
+                    <img src="{{settings.logo.url}}" style="width: 100px; border-radius: 50%; " alt="logo__image">
                 </a>
                 <form action="{% url 'search' %}" method="post">
                     {% csrf_token %}
