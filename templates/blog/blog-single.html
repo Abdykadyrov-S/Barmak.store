@@ -7,13 +7,13 @@
         <!-- Page banner area start here -->
         <section class="page-banner bg-image pt-130 pb-130" data-background="assets/images/banner/inner-banner.jpg">
             <div class="container">
-                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Blog Single</h2>
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Подробнее о проекте</h2>
                 <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
-                    <a href="index.html" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Home <i
+                    <a href="{% url 'index' %}" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Главная страница <i
                             class="fa-regular text-white fa-angle-right"></i></a>
-                    <a href="blog.html" class="primary-hover"> Blog <i
+                    <a href="{% url 'news' %}" class="primary-hover"> Новости <i
                             class="fa-regular text-white fa-angle-right"></i></a>
-                    <span>Blog Single</span>
+                    <span>{{news.title}}</span>
                 </div>
             </div>
         </section>
